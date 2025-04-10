@@ -658,10 +658,10 @@ body {
 }
 
 .pay-inner{
-  width: 100vw;
+  width: calc(100% + 40px);
   margin: -98px -20px 0;
   padding: 92px 20px 70px;
-  border-radius: 0px 0px 40px 40px;
+  border-radius: 0 0 40px 40px;
   background: linear-gradient(180deg, #110C37 0%, #574CE8 100%);
 }
 
@@ -840,6 +840,11 @@ body {
   background: linear-gradient(168deg, #B4ADFF 14.7%, #5F44F8 91.24%);
 }
 
+.tab__upsale .tariff__item-popular-content{
+  font-size: 15px;
+  line-height: normal;
+}
+
 .tariff__item-content:before{
   position: absolute;
   content: "";
@@ -849,6 +854,11 @@ body {
   left: 12px;
   background: url("../assets/img/checkmark.svg") no-repeat center center;
 }
+
+.tab__upsale .tariff__item-content:before{
+  background: url("../assets/img/checkmark-upsale.svg") no-repeat center center;
+}
+
 
 .tariff__item-content:after{
   position: absolute;
@@ -901,6 +911,12 @@ body {
 .tariff__period-price-new{
   font-size: 15px;
   font-weight: 600;
+}
+
+.tab__upsale .tariff__period-price-new {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25px;
 }
 
 .tariff__day{
@@ -1066,11 +1082,12 @@ body {
   padding: 34px 0 40px;
 }
 
+.tab__upsale .title{
+  color: var(--color-text-primary);
+}
+
 .title span{
-  background: linear-gradient(180deg, #5890FF 0%, #3B52FF 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #665AFF;
 }
 
 .tariff__title{
@@ -1100,14 +1117,12 @@ body {
 .tariff__item-content--column{
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 4px;
 }
 
 .tariff__description{
   display: flex;
   gap: 12px;
-  width: calc(100% + 36px);
-  margin-left: -36px;
 }
 
 .tariff__description-cover{
@@ -1127,17 +1142,16 @@ body {
   font-size: 13px;
   line-height: 18px;
   letter-spacing: -0.01px;
+
+}
+
+.tab__upsale .tariff__description-text{
+  opacity: 0.7;
 }
 
 .link-skip{
   color: var(--color-text-secondary);
   text-align: center;
-  text-decoration-line: underline;
-  text-decoration-style: solid;
-  text-decoration-skip-ink: auto;
-  text-decoration-thickness: auto;
-  text-underline-offset: auto;
-  text-underline-position: from-font;
   margin: 26px 0 38px;
 }
 
