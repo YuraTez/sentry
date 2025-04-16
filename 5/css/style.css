@@ -423,8 +423,8 @@ body {
 .analyzing__item-icon {
   position: relative;
   flex-shrink: 0;
-  width: 21.5px;
-  height: 21.5px;
+  width: 24px;
+  height: 24px;
 }
 
 .analyzing__item-icon svg {
@@ -555,10 +555,7 @@ body {
   font-weight: 500;
   line-height: 22px;
   letter-spacing: -0.073px;
-  background: var(--color-text-red);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--color-text-red);
 }
 
 .blur{
