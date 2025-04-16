@@ -897,6 +897,12 @@ body {
   opacity: 0;
 }
 
+.tariffs--compact .tariff__item-content:before,
+.tariffs--compact .tariff__item-content:after{
+  width: 20px;
+  height: 20px;
+}
+
 .tab__upsale .tariff__item-content:after{
   background: url("../assets/img/checkmark-check-upsale.svg") no-repeat center center;
 }
