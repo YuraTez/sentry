@@ -52,6 +52,7 @@ function generateUUID() {
 function createUser(){
   const link = new URL(window.location.href);
   const clickId = link.searchParams.get('click_id') !== null ? link.searchParams.get('click_id') : generateUUID(10);
+  const domain = window.location.hostname;
   setCookie('userId', clickId, 90);
   setCookie('userEmail', emailInput.val(), 90);
 
@@ -60,6 +61,7 @@ function createUser(){
     "email": emailInput.val(),
     "click_id": clickId,
     "first_product_id": "0598d54b-7240-4c67-913a-ab188240c14a",
+    "domain": domain
   }
 
   async function sendPostRequest() {
