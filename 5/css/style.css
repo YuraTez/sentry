@@ -831,7 +831,6 @@ body {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 2px 8px 0 rgba(66, 91, 113, 0.15);
   padding: 14px 12px 14px 48px;
-  overflow: hidden;
   transition: .3s;
 }
 
@@ -920,6 +919,23 @@ body {
 
 .tariff__item-input:checked + .tariff__item-content:after{
   opacity: 1;
+}
+
+.best-offer{
+  position: absolute;
+  right: 12px;
+  top: -15px;
+  text-align: center;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 25px;
+  letter-spacing: 0.5px;
+  color: var(--color-text-white);
+  border-radius: 9px;
+  background: linear-gradient(296deg, #B4ADFF 10.37%, #5F44F8 90.8%);
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  padding: 0 20px 0 22px;
 }
 
 .tariff__period{
