@@ -133,3 +133,12 @@ function getCookie(name) {
 }
 
 $("#offerSkip").on("click", switchTab)
+/*
+
+window.addEventListener('popstate', function(event) {
+  // Здесь вы можете выполнить нужные действия
+  console.log('Кнопка "Назад" была нажата');
+
+  // Например, можно показать уведомление
+  alert('Вы нажали кнопку "Назад"');
+});*/
