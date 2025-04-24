@@ -665,31 +665,62 @@ body {
   padding: 0 0 16px;
 }
 
+.alert{
+  border-radius: 12px;
+  background: #ECECEC;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.08);
+  padding: 18px 18px 11px 32px;
+  margin-bottom: 38px;
+}
+
+.alert__info{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(28, 28, 28, 0.5);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0 0 4px -20px;
+}
+
+.alert__issue{
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: -0.043px;
+  color: #1C1C1C;
+  margin-bottom: 16px;
+}
+
+.alert__issue span{
+  color: #FF2E32;
+}
+
 .time {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-radius: 10px;
-  background: url("../assets/img/discount.png") no-repeat center/cover;
-  box-shadow: 0px 2px 8px 0px rgba(66, 91, 113, 0.15);
-  padding: 5px 12px;
-  overflow: hidden;
 }
 
 .time__text {
-  color: var(--color-text-white);
-  font-size: 17px;
+  color: #1C1C1C;
+  font-size: 14px;
   font-style: normal;
   font-weight: 600;
-  line-height: 22px;
-  letter-spacing: -0.073px;
+  line-height: 18px;
+  letter-spacing: -0.043px;
 }
 
 .time__content {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: rgba(255, 255, 255, 0.70);
+  color: #1C1C1C;
   font-size: 20px;
   font-style: normal;
   font-weight: 600;
@@ -702,14 +733,15 @@ body {
   justify-content: center;
   align-items: center;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.50);
-  width: 44px;
-  height: 52px;
-  color: var(--color-text-white);
-  font-size: 22px;
+  border: 1px solid var(--color-text-red);
+  width: 39px;
+  height: 39px;
+  color: #1C1C1C;
+  font-size: 19px;
+  font-style: normal;
   font-weight: 600;
-  line-height: 34px;
-  letter-spacing: -0.057px;
+  line-height: 30px;
+  letter-spacing: -0.051px;
 }
 
 .logo-secondary{
@@ -842,6 +874,7 @@ body {
 }
 
 .tariff__item-content.tariff__item-popular{
+  overflow: hidden;
   padding-top: 46px;
 }
 
@@ -944,6 +977,10 @@ body {
   gap: 6px;
 }
 
+.tariffs--compact .tariff__period{
+  gap: 0;
+}
+
 .tariff__period-data{
   display: flex;
   align-items: center;
@@ -996,6 +1033,14 @@ body {
   font-style: normal;
   font-weight: 300;
   letter-spacing: 0.5px;
+}
+
+.tariff__period-text .tariff__period-price-new{
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: normal;
 }
 
 .tariff__sale{

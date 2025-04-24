@@ -115,7 +115,6 @@ async function handleSubmit(e) {
 
     // 2. Сразу подтверждаем платеж на клиенте
     const {clientSecret} = await fetchSubscriptionData();
-console.log(clientSecret)
     const { paymentIntent, error: piError } = await stripe.confirmCardPayment(
       clientSecret, // clientSecret из initialize()
       {
@@ -204,14 +203,6 @@ if(getCookie("userId")){
 
 document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
 
-
-
-/*
-
-$("#payment-form").on("click", ()=>{
-  $("#paymentFormSubmit").removeClass("btn--disabled");
-})
-*/
 
 
 

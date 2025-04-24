@@ -11,6 +11,7 @@ function logView(data) {
 }
 
 function switchTab() {
+
   window.scrollTo(0, 0);
 
   const $currentTab = $('.tab__page.show');
@@ -24,6 +25,7 @@ function switchTab() {
   $(`.tab__page[data-tab="${nextIndex}"]`).addClass('show');
 
   $(".popup").removeClass("active")
+  sendMetaPixel ()
 }
 
 $(".open-animation-tab").on("click", function(){
@@ -133,12 +135,12 @@ function getCookie(name) {
 }
 
 $("#offerSkip").on("click", switchTab)
-/*
 
-window.addEventListener('popstate', function(event) {
-  // Здесь вы можете выполнить нужные действия
-  console.log('Кнопка "Назад" была нажата');
 
-  // Например, можно показать уведомление
-  alert('Вы нажали кнопку "Назад"');
-});*/
+function sendMetaPixel (){
+  let tabEvent = $(".tab__page.show").attr("data-meta")
+  if(tabEvent){
+    fbq('track', tabEvent);
+  }
+}
+sendMetaPixel ()

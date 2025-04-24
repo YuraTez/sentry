@@ -8,7 +8,7 @@
     <meta name="theme-color" content="var(--color-basic-bg)">
     <title>Sentry</title>
     <link rel="icon" href="assets/img/fi.svg" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css?v4">
+    <link rel="stylesheet" href="css/style.css?v6">
     <script type="text/javascript">
       (function (m, e, t, r, i, k, a) {
         m[i] = m[i] || function () {
@@ -34,6 +34,23 @@
     <noscript>
         <div><img src="https://mc.yandex.ru/watch/99988242" style="position:absolute; left:-9999px;" alt=""/></div>
     </noscript>
+
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1314209046483727');
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+    </noscript>
 </head>
 <body>
 <div class="app">
@@ -47,7 +64,7 @@
     </header>
     <div class="app__container">
         <div class="tab">
-            <div class="tab__page tab__start show" data-tab="1">
+            <div class="tab__page tab__start show" data-tab="1" data-meta="ViewContent">
                 <div class="banner">
                     <div class="banner__container">
                         <div class="banner__content">
@@ -273,7 +290,7 @@
                     </div>
                 </footer>
             </div>
-            <div class="tab__page tab__animation " data-tab="2">
+            <div class="tab__page tab__animation " data-tab="2" data-meta="CustomizeProduct">
                 <div class="tab__container">
                     <div class="animation-gallery" id="lottiImgList"></div>
                     <div class="analyzing">
@@ -391,7 +408,7 @@
 
                 </div>
             </div>
-            <div class="tab__page tab__pay" data-tab="4">
+            <div class="tab__page tab__pay" data-tab="4" data-meta="IntiateCheckout">
                 <div class="tab__container">
                     <div class="pay-inner">
                         <div class="logo-secondary">
@@ -423,15 +440,24 @@
                                 </defs>
                             </svg>
                         </div>
-                        <div class="title">
-                            Safe checkout
-                        </div>
-                        <div class="time">
-                            <div class="time__text">Personal offer expires in</div>
-                            <div class="time__content">
-                                <span id="minutes">10</span> : <span id="seconds">00</span>
+                        <div class="alert">
+                            <div class="alert__info">
+                                <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M14.6663 8.93669C14.6663 5.25479 11.6816 2.27002 7.99967 2.27002C4.31778 2.27002 1.33301 5.25479 1.33301 8.93669C1.33301 12.6186 4.31778 15.6034 7.99967 15.6034C11.6816 15.6034 14.6663 12.6186 14.6663 8.93669ZM7.99967 5.10335C8.27582 5.10335 8.49967 5.32721 8.49967 5.60335V9.60335C8.49967 9.8795 8.27582 10.1034 7.99967 10.1034C7.72353 10.1034 7.49967 9.8795 7.49967 9.60335V5.60335C7.49967 5.32721 7.72353 5.10335 7.99967 5.10335ZM7.99967 12.27C8.36786 12.27 8.66634 11.9715 8.66634 11.6034C8.66634 11.2352 8.36786 10.9367 7.99967 10.9367C7.63148 10.9367 7.33301 11.2352 7.33301 11.6034C7.33301 11.9715 7.63148 12.27 7.99967 12.27Z" fill="#E53030"/>
+                                </svg>
+                                Attention
+                            </div>
+                            <div class="alert__issue">
+                                Detected issues: <span>23</span>
+                            </div>
+                            <div class="time">
+                                <div class="time__text">Protect your phone <br> with special offer:</div>
+                                <div class="time__content">
+                                    <span id="minutes">10</span> : <span id="seconds">00</span>
+                                </div>
                             </div>
                         </div>
+
                         <div class="tariffs tariffs--compact">
                             <div class="tariff__item">
                                 <input type="radio" class="tariff__item-input tariff__item-pay" name="tariff" value="58f1f180-d8c5-489e-b5a6-b6508e8d43ae" checked id="tariff_1" data-price="plan_changed_1w">
@@ -441,11 +467,11 @@
                                     </span>
                                     <div class="tariff__period">
                                         <div class="tariff__period-data">
-                                            1 week for
-                                            <div class="tariff__period-price-new">$4.99</div>
+                                            $0.71 per day
                                         </div>
                                         <div class="tariff__period-text">
-                                            $0.71 per day
+                                            1 week for
+                                            <span class="tariff__period-price-new">$4.99</span>
                                         </div>
                                     </div>
                                 </label>
@@ -455,11 +481,11 @@
                                 <label for="tariff_2" class="tariff__item-content">
                                     <div class="tariff__period">
                                         <div class="tariff__period-data">
-                                            1 month for
-                                            <div class="tariff__period-price-new">$13.99</div>
+                                            $0.46 per day
                                         </div>
                                         <div class="tariff__period-text">
-                                            $0.46 per day
+                                            1 month for
+                                            <span class="tariff__period-price-new">$13.99</span>
                                         </div>
                                     </div>
                                 </label>
@@ -469,11 +495,12 @@
                                 <label for="tariff_3" class="tariff__item-content">
                                     <div class="tariff__period">
                                         <div class="tariff__period-data">
-                                            Quarterly for
-                                            <div class="tariff__period-price-new">$20.99</div>
+                                            $0.23 per day
                                         </div>
                                         <div class="tariff__period-text">
-                                            $0.23 per day
+                                            Quarterly for
+                                            <span class="tariff__period-price-new">$20.99</span>
+
                                         </div>
                                     </div>
                                 </label>
@@ -745,7 +772,7 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.solidgate.com/js/solid-form.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
-<script src="js/amplitude.js"></script>
+<script src="js/amplitude.js?v2"></script>
 <script src="js/main.js?v5"></script>
 <script src="js/user-create.js?v5"></script>
 <script src="js/payment.js?v5"></script>
