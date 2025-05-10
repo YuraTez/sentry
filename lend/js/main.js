@@ -1,11 +1,13 @@
 //animation
-const animation = lottie.loadAnimation({
-  container: document.querySelector("#lottiImgList"),
-  renderer: 'svg',
-  loop: false,
-  autoplay: true,
-  path: `assets/animation/main.json`
-});
+if($("#lottiImgList").length){
+  const animation = lottie.loadAnimation({
+    container: document.querySelector("#lottiImgList"),
+    renderer: 'svg',
+    loop: false,
+    autoplay: true,
+    path: `assets/animation/main.json`
+  });
+}
 
 function detectedIssues(){
   const targetNumber = 23;
@@ -30,7 +32,7 @@ function detectedIssues(){
 
 //slider
 
-if($(window).width() < 1350){
+if($(window).width() < 1350 && $(".working-process").length){
   $('.working-process').slick({
     infinite: true,
     slidesToShow: 1,
@@ -45,4 +47,12 @@ if($(window).width() < 1350){
 
 $(".burger-js").on("click", function(){
   $(".burger-content").toggleClass("show");
+})
+
+$(".switch__el").on("click", function(){
+  const plan = $(this).attr("data-plan")
+  $('.switch__el').removeClass('active');
+  $(this).addClass("active")
+  $(".plans__elem").removeClass("show");
+  $(`.plans__elem[data-plan=${plan}]`).addClass("show");
 })
