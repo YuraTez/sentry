@@ -27,7 +27,6 @@
   font-family: var(--font-family);
   color: var(--color-text-primary);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  scroll-behavior: smooth;
 }
 
 input[type="radio"] {
