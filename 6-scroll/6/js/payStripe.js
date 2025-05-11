@@ -94,7 +94,17 @@ async function fetchSubscriptionData(paymentMethod) {
 async function handleSubmit(e) {
   e.preventDefault();
 
+  const userNameInput = $("#card-holder-element");
+
+  if(!userNameInput.val()){
+    userNameInput.addClass("StripeElement--invalid")
+    return
+  }else{
+    userNameInput.removeClass("StripeElement--invalid")
+  }
+
   setLoading(true);
+
 
   const email = getCookie("userEmail");
 

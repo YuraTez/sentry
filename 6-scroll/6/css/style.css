@@ -1377,7 +1377,8 @@ body {
   padding: 16px;
 }
 
-.StripeElement.StripeElement--invalid{
+.StripeElement.StripeElement--invalid,
+input.StripeElement--invalid{
   border: 1px solid #eb1c26;
 }
 
