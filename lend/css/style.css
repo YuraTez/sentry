@@ -14,6 +14,8 @@
   --font-family: "SF Pro Display", sans-serif;
   --second-family: "SF Pro Text", sans-serif;
   --third-family: "SF Compact Display", sans-serif;
+  --animate-duration: 800ms;
+  --animate-delay: 0.5s;
 }
 
 * {
@@ -1291,3 +1293,159 @@ body {
 .header__nav-list__item.active a {
   font-weight: 500;
 }
+
+.text-page__main{
+  max-width: 962px;
+  margin: 0 auto;
+}
+
+.animate-on-scroll{
+  opacity: 0;
+}
+
+.animate-on-scroll.animate__animated {
+  opacity: 1;
+}
+
+h1 {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: 0.364px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.separator{
+  max-width: 200px;
+  margin: 15px auto;
+  border-top: 1px solid #5F44F8;
+  border-bottom: 1px solid #5F44F8;
+  font-size: 13px;
+  line-height: 18px;
+  padding: 15px 0;
+  text-align: center;
+}
+
+.text-page__main-description{
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 20px;
+  letter-spacing: 0.38px;
+  text-align: center;
+}
+
+.text-page__content{
+  margin: 60px 0;
+}
+
+.text-page__block h2{
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 22px;
+  margin-bottom: 10px;
+}
+
+.text-page__block:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+.text-page__block p{
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.5px;
+}
+
+.text-page__list:not(:last-child){
+  margin-bottom: 5px;
+}
+
+.text-page__list li{
+  position: relative;
+  padding-left: 25px;
+  font-size: 16px;
+  line-height: 22px;
+  letter-spacing: -0.5px;
+}
+
+.text-page__list li:before{
+  position: absolute;
+  content: "";
+  width: 3px;
+  height: 3px;
+  background: #110D38;
+  border-radius: 50%;
+  left: 10px;
+  top: 10px;
+}
+
+@media (min-width: 1350px) {
+  h1 {
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 70px;
+    letter-spacing: 0.364px;
+  }
+
+  .separator{
+    max-width: 420px;
+    margin: 20px auto;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0.38px;
+    padding: 20px 0;
+  }
+
+  .text-page__content{
+    margin: 100px 0;
+  }
+
+  .text-page__main-description{
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 30px;
+    letter-spacing: 0.38px;
+  }
+
+  .text-page__block:not(:last-child) {
+    margin-bottom: 50px;
+  }
+
+  .text-page__block h2{
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 30px;
+    margin-bottom: 20px;
+  }
+
+  .text-page__block p{
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  .text-page__list:not(:last-child){
+    margin-bottom: 10px;
+  }
+
+  .text-page__list li{
+    position: relative;
+    padding-left: 36px;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: -0.5px;
+  }
+
+  .text-page__list li:before{
+    position: absolute;
+    content: "";
+    width: 5px;
+    height: 5px;
+    left: 16px;
+    top: 13px;
+  }
+}
+
+
+

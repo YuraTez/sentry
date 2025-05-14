@@ -5,6 +5,11 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" href="assets/img/fi.svg" type="image/x-icon">
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="css/style.css">
     <title>price</title>
 </head>
@@ -26,26 +31,27 @@
             <nav class="header__nav d-none">
                 <ul class="header__nav-list">
                     <li class="header__nav-list__item active"><a href="price.html">Price</a></li>
-                    <li class="header__nav-list__item"><a href="">Terms and Conditions</a></li>
-                    <li class="header__nav-list__item"><a href="">Privacy Policy</a></li>
+                    <li class="header__nav-list__item"><a href="privacy.html">Privacy Policy</a></li>
+                    <li class="header__nav-list__item"><a href="cookie.html">Cookies Policy</a></li>
+                    <li class="header__nav-list__item"><a href="terms.html">Terms of Use</a></li>
                 </ul>
             </nav>
         </div>
     </header>
     <div class="plans">
         <div class="container">
-            <div class="title">Plans</div>
-            <p class="section-text">
+            <div class="title animate__animated animate__fadeIn animate__slow">Plans</div>
+            <p class="section-text animate__animated animate__fadeInUp animate__fast">
                 Protect your identity and enjoy full digital security with advanced protection features, including
                 identity monitoring, email threat defense, and ad blocking.
             </p>
             
-            <div class="switch">
+            <div class="switch animate__animated animate__fadeInUp animate__fast animate__delay-1s">
                 <div class="switch__el active" data-plan="weekly">Weekly</div>
                 <div class="switch__el " data-plan="yearly">Yearly</div>
             </div>
 
-            <div class="plans-content">
+            <div class="plans-content animate__animated animate__fadeInUp animate__fast animate__delay-1s">
                 <div class="plans__elem show" data-plan="weekly">
                     <div class="plans__title">Weekly Plan</div>
                     <div class="plans__price">
@@ -189,7 +195,7 @@
                     <div class="plans__interval-pay">One-time annual payment.</div>
                 </div>
             </div>
-            <div class="inner-btn">
+            <div class="inner-btn animate-on-scroll">
                 <div class="btn">Get Started</div>
                 <div class="meta-security">
                     <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -203,9 +209,9 @@
     </div>
     <div class="section benefits">
         <div class="container">
-            <h2 class="title">How Sentry <br> keeps you safe</h2>
+            <h2 class="title animate-on-scroll">How Sentry <br> keeps you safe</h2>
             <div class="benefits__list">
-                <div class="benefits__item">
+                <div class="benefits__item animate-on-scroll">
                     <div class="benefits__item-main">
                         <div class="benefits__item-cover">
                             <img src="assets/img/benefits/1.svg" alt="img">
@@ -218,7 +224,7 @@
                     </p>
 
                 </div>
-                <div class="benefits__item">
+                <div class="benefits__item animate-on-scroll">
                     <div class="benefits__item-main">
                         <div class="benefits__item-cover">
                             <img src="assets/img/benefits/2.svg" alt="img">
@@ -229,7 +235,7 @@
                         Stay safe from phishing and tracking by protecting your inbox in real time.
                     </p>
                 </div>
-                <div class="benefits__item">
+                <div class="benefits__item animate-on-scroll">
 
                     <div class="benefits__item-main">
                         <div class="benefits__item-cover">
@@ -241,7 +247,7 @@
                         Check if your device is jailbroken or at risk, and fix issues to stay protected.
                     </p>
                 </div>
-                <div class="benefits__item">
+                <div class="benefits__item animate-on-scroll">
 
                     <div class="benefits__item-main">
                         <div class="benefits__item-cover">
@@ -253,7 +259,7 @@
                         Filter out spam and scams — only real messages reach you.
                     </p>
                 </div>
-                <div class="benefits__item">
+                <div class="benefits__item animate-on-scroll">
                     <div class="benefits__item-main">
                         <div class="benefits__item-cover">
                             <img src="assets/img/benefits/5.svg" alt="img">
@@ -264,7 +270,7 @@
                         Hide annoying ads in apps and websites to browse distraction-free.
                     </p>
                 </div>
-                <div class="benefits__item">
+                <div class="benefits__item animate-on-scroll">
                     <div class="benefits__item-main">
                         <div class="benefits__item-cover">
                             <img src="assets/img/benefits/6.svg" alt="img">
@@ -276,18 +282,18 @@
                     </p>
                 </div>
             </div>
-            <div class="inner-btn">
+            <div class="inner-btn animate-on-scroll">
                 <div class="btn">Get Started</div>
             </div>
         </div>
     </div>
     <div class="section support">
         <div class="container">
-            <div class="support-container">
+            <div class="support-container animate-on-scroll">
                 <h2 class="title">
                     Support When <br class="desktop-none"> You Need It
                 </h2>
-                <div class="support-inner">
+                <div class="support-inner animate-on-scroll">
                     <p class="section-text">
                         Have questions? Our team is here to help <br> you stay protected and worry-free.
                     </p>
@@ -430,8 +436,10 @@
     </div>
     <div class="burger-menu">
         <a href="price.html" class="burger-menu__el">Price</a>
-        <a href="terms.html" class="burger-menu__el">Terms and Conditions</a>
         <a href="privacy.html" class="burger-menu__el">Privacy Policy</a>
+        <a href="cookie.html" class="burger-menu__el">Cookies Policy</a>
+        <a href="terms.html" class="burger-menu__el">Terms of Use</a>
+
     </div>
 </div>
 <script

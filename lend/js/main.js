@@ -56,3 +56,24 @@ $(".switch__el").on("click", function(){
   $(".plans__elem").removeClass("show");
   $(`.plans__elem[data-plan=${plan}]`).addClass("show");
 })
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  const animatedElements = document.querySelectorAll(".animate-on-scroll");
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate__animated", "animate__fadeInUp", "animate__fast");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1 }
+  );
+
+  animatedElements.forEach((element) => {
+    observer.observe(element);
+  });
+});
