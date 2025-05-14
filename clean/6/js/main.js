@@ -5,10 +5,12 @@ function cleanVersion (){
 
   if(utm){
     $(".app").addClass("clean")
-    $(".tariff__item-content--black").remove()
+    $(".tariff__item-content--black").remove();
+    $(".popup-content--black").remove();
   }else{
     startLottiAnimation("#lottiImgList" , "SentryFunnel.json" , true)
     $(".tariff__item-content--white").remove()
+    $(".popup-content--white").remove();
   }
 }
 
