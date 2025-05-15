@@ -389,6 +389,9 @@ body {
 }
 
 .detected-issues{
+  display: flex;
+  align-items: center;
+  gap: 5px;
   width: fit-content;
   border-radius: 15px;
   padding: 12px 14px;
