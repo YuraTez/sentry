@@ -1705,3 +1705,15 @@ input.StripeElement--invalid{
 .clean .features .title{
   margin-bottom: 40px;
 }
+
+.detected-issues__text--white{
+  display: none;
+}
+
+.clean .detected-issues__text--white{
+  display: block;
+}
+
+.clean .detected-issues__text--black {
+  display: none;
+}
