@@ -69,7 +69,11 @@ const items = document.querySelectorAll('.analyzing__item');
 const lineTrack = document.querySelector('.analyzing__line-track');
 
 function animateLoading() {
-  detectedIssues()
+  if($(".clean").length){
+    detectedIssues(4)
+  } else{
+    detectedIssues(23)
+  }
   let totalTime = 8000;
   let itemDuration = totalTime / items.length;
   let width = 0;
@@ -98,8 +102,8 @@ function animateLoading() {
   });
 }
 
-function detectedIssues(){
-  const targetNumber = 23;
+function detectedIssues(num){
+  const targetNumber = num;
   const duration = 8000; // 8 секунд
   const startTime = performance.now();
 

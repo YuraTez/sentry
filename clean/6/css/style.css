@@ -1725,3 +1725,12 @@ input.StripeElement--invalid{
   padding-top: 215px;
   background: url("../assets/img/banner-bg-wite.svg") no-repeat center 22px;
 }
+
+.analyzing__item-text--white,
+.clean .analyzing__item-text--black{
+  display: none;
+}
+
+.clean .analyzing__item-text--white{
+  display: block;
+}
