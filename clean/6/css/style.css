@@ -1720,3 +1720,8 @@ input.StripeElement--invalid{
 .clean .detected-issues__text--black {
   display: none;
 }
+
+.clean .banner {
+  padding-top: 215px;
+  background: url("../assets/img/banner-bg-wite.svg") no-repeat center 22px;
+}
