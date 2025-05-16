@@ -1734,3 +1734,12 @@ input.StripeElement--invalid{
 .clean .analyzing__item-text--white{
   display: block;
 }
+
+.banner__title--white,
+.clean .banner__title--black{
+  display: none;
+}
+
+.clean .banner__title--white{
+  display: block;
+}
