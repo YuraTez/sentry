@@ -1490,6 +1490,24 @@ input.StripeElement--invalid{
   line-height: 16px;
 }
 
-.js-marquee{
-  margin: 0 !important;
+.line-info {
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: marquee 10s linear infinite;
+  width: max-content;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
