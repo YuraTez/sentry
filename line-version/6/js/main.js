@@ -1,11 +1,3 @@
-$(function() {
-  $('.line-info__content').marquee({
-    duration: 14000,
-    startVisible: true,
-    duplicated: true
-  });
-});
-
 if (getCookie("successPay")){
   $(".tab__page").removeClass("show")
   $(".tab__download").addClass("show");
