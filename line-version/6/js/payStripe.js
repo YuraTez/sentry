@@ -59,6 +59,24 @@ async function initialize() {
     cardExpiry.on('focus', handleInteraction);
     cardCvc.on('focus', handleInteraction);
 
+    cardNumber.on('change', (event) => {
+      if (event.complete) {
+        cardExpiry.focus();
+      }
+    });
+
+    cardExpiry.on('change', (event) => {
+      if (event.complete) {
+        cardCvc.focus();
+      }
+    });
+
+    cardCvc.on('change', (event) => {
+      if (event.complete) {
+        $("#card-holder-element").focus();
+      }
+    });
+
 
   } catch (error) {
     console.error("Initialization error:", error);
