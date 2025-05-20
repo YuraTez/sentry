@@ -84,7 +84,12 @@ function postData(product){
         }
       }
 
+      let validFlag = false
+
       $("#solid-form-button-submit").on("click", ()=> {
+        if(validFlag){
+          $(".form-loader").removeClass("hide")
+        }
         formPay.submit()
       })
 
@@ -104,6 +109,13 @@ function postData(product){
       formPay.on('interaction', e => {
 
         const data = e.data ;
+
+        const validationInput = data.cardForm.fields
+
+
+        const hasInvalidFields = Object.values(validationInput).some(item => !item.isValid);
+        const validFlag = !hasInvalidFields;
+
         if(data.target.type === "button"){
           amplitude.logEvent('purchase_intent');
           const fieldValues = Object.values(data.cardForm.fields);
@@ -140,6 +152,7 @@ function postData(product){
         setTimeout(function (){
           setCookie('successPay', "true", 90);
           $(".popup-success").addClass("active")
+          $(".form-loader").addClass("hide")
           setCookie('successPay', "true", 90);
           if(e.data.entity === "applebtn"){
             $(".btn-success").addClass("applePaySuccess");
@@ -150,6 +163,11 @@ function postData(product){
 
           amplitude.logEvent('success_view');
         },1000)
+      })
+
+      formPay.on('fail', e => {
+        $(".popup-error").addClass("active");
+        $(".form-loader").addClass("hide")
       })
 
       setTimeout(function (){
