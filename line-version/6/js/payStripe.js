@@ -138,6 +138,8 @@ async function handleSubmit(e) {
 
     if (pmError) throw pmError;
 
+    amplitude.logEvent("purchase_try");
+
     // 2. Сразу подтверждаем платеж на клиенте
     const {clientSecret} = await fetchSubscriptionData(paymentMethod.id);
 
@@ -154,6 +156,7 @@ async function handleSubmit(e) {
     // 3. Обработка результата
     switch (paymentIntent.status) {
       case 'succeeded':
+        amplitude.logEvent("purchase_success");
         $(".popup-success").addClass("active")
         setCookie('successPay', "true", 90);
         await completeSubscription(paymentIntent.id);
@@ -162,14 +165,17 @@ async function handleSubmit(e) {
         await stripe.handleCardAction(clientSecret);
         break;
       default:
+        amplitude.logEvent("purchase_fail");
         $(".popup-error").addClass("active")
         setCookie('successPay', "true", 90);
         throw new Error(`Unexpected status: ${paymentIntent.status}`);
     }
 
   } catch (error) {
+    amplitude.logEvent("purchase_fail");
     $(".popup-error").addClass("active")
-    showMessage(error.message);
+    alert(showMessage(error.message))
+    showMessage(error.message)
   } finally {
     setLoading(false);
   }
