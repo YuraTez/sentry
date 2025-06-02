@@ -1,6 +1,6 @@
 if (getCookie("successPay")){
   $(".tab__page").removeClass("show")
-  $(".tab__upsale").addClass("show");
+  $(".tab__download").addClass("show");
 } else if(getCookie("userId")){
   $(".tab__page").removeClass("show")
   $(".tab__pay").addClass("show");
@@ -32,7 +32,7 @@ $(".open-animation-tab").on("click", function(){
   switchTab()
   logView("scan_start_click")
   animateLoading();
-  startLottiAnimation("#lottiImgList" , "SentryFunnel.json" , true)
+
 })
 
 //animation
@@ -45,6 +45,8 @@ function startLottiAnimation(container , path , loop){
     path: `assets/animation/${path}`
   });
 }
+
+startLottiAnimation("#lottiImgList" , "SentryFunnel.json" , true)
 
 const items = document.querySelectorAll('.analyzing__item');
 const lineTrack = document.querySelector('.analyzing__line-track');
@@ -143,3 +145,16 @@ function sendMetaPixel (){
   }
 }
 sendMetaPixel ()
+
+$('.tariffs--compact .tariff__item-content').on('click', function(e) {
+  $('html, body').css('overflow', 'hidden');
+
+  setTimeout(() => {
+    const targetPosition = $('#paymentBlock').offset().top - 50;
+
+    $('html, body').css('overflow', '').animate(
+      { scrollTop: targetPosition },
+      800
+    );
+  }, 1000);
+});

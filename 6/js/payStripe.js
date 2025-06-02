@@ -24,10 +24,8 @@ let cardNumber, cardExpiry, cardCvc;
 
 async function initialize() {
   try {
-   /* const {clientSecret} = await fetchSubscriptionData();*/
 
     elements = stripe.elements({
-    /*  clientSecret,*/
       appearance: {
         theme: 'stripe'
       }
@@ -61,6 +59,23 @@ async function initialize() {
     cardExpiry.on('focus', handleInteraction);
     cardCvc.on('focus', handleInteraction);
 
+    cardNumber.on('change', (event) => {
+      if (event.complete) {
+        cardExpiry.focus();
+      }
+    });
+
+    cardExpiry.on('change', (event) => {
+      if (event.complete) {
+        cardCvc.focus();
+      }
+    });
+
+    cardCvc.on('change', (event) => {
+      if (event.complete) {
+        $("#card-holder-element").focus();
+      }
+    });
 
   } catch (error) {
     console.error("Initialization error:", error);
@@ -95,6 +110,16 @@ async function fetchSubscriptionData(paymentMethod) {
 //PaymentMethod
 async function handleSubmit(e) {
   e.preventDefault();
+
+  const userNameInput = $("#card-holder-element");
+
+  if(!userNameInput.val()){
+    userNameInput.addClass("StripeElement--invalid")
+    return
+  }else{
+    userNameInput.removeClass("StripeElement--invalid")
+  }
+
   setLoading(true);
 
   const email = getCookie("userEmail");
@@ -129,6 +154,7 @@ async function handleSubmit(e) {
     switch (paymentIntent.status) {
       case 'succeeded':
         $(".popup-success").addClass("active")
+        setCookie('successPay', "true", 90);
         await completeSubscription(paymentIntent.id);
         break;
       case 'requires_action':
@@ -136,6 +162,7 @@ async function handleSubmit(e) {
         break;
       default:
         $(".popup-error").addClass("active")
+        setCookie('successPay', "true", 90);
         throw new Error(`Unexpected status: ${paymentIntent.status}`);
     }
 
@@ -184,6 +211,7 @@ $('.tariff__item-pay').on('click', function() {
 
   const price = $(this).next().find(".tariff__period-price-new").text();
   $("#payWeak").text(price)
+
 });
 
 const payButton = document.querySelector(".pay-button");
@@ -203,14 +231,6 @@ if(getCookie("userId")){
 
 document.querySelector("#payment-form").addEventListener("submit", handleSubmit);
 
-
-
-/*
-
-$("#payment-form").on("click", ()=>{
-  $("#paymentFormSubmit").removeClass("btn--disabled");
-})
-*/
 
 
 
