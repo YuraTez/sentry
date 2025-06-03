@@ -137,6 +137,8 @@ async function handleSubmit(e) {
 
     if (pmError) throw pmError;
 
+    logView("purchase_try")
+
     // 2. Сразу подтверждаем платеж на клиенте
     const {clientSecret} = await fetchSubscriptionData(paymentMethod.id);
 
@@ -153,6 +155,7 @@ async function handleSubmit(e) {
     // 3. Обработка результата
     switch (paymentIntent.status) {
       case 'succeeded':
+        logView("purchase_success")
         $(".popup-success").addClass("active")
         setCookie('successPay', "true", 90);
         await completeSubscription(paymentIntent.id);
@@ -162,12 +165,14 @@ async function handleSubmit(e) {
         break;
       default:
         $(".popup-error").addClass("active")
+        logView("purchase_fail")
         setCookie('successPay', "true", 90);
         throw new Error(`Unexpected status: ${paymentIntent.status}`);
     }
 
   } catch (error) {
     $(".popup-error").addClass("active")
+    logView("purchase_fail")
     showMessage(error.message);
   } finally {
     setLoading(false);
@@ -206,7 +211,7 @@ function setLoading(isLoading) {
 
 $('.tariff__item-pay').on('click', function() {
   const event = $(this).attr("data-price");
-  amplitude.logEvent(event);
+  logView(event)
   initialize();
 
   const price = $(this).next().find(".tariff__period-price-new").text();

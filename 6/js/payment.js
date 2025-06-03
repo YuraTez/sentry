@@ -94,12 +94,11 @@ function postData(product){
           setCookie('successPay', "true", 90);
           if(e.data.entity === "applebtn"){
             $(".btn-success").addClass("applePaySuccess");
-            amplitude.logEvent('apple_pay_success');
+            logView("apple_pay_success")
           }else{
-            amplitude.logEvent('purchase_success');
+            logView("purchase_success")
           }
-
-          amplitude.logEvent('success_view');
+          logView("success_view")
         },1000)
       })
 
@@ -116,7 +115,7 @@ $('.tariff__item-pay').on('click', function() {
   const event = $(this).attr("data-price");
   const period = $(this).next().find(".tariff__subscription-period").text().trim().toLowerCase()
   const cost = $(this).attr("data-cost");
-  amplitude.logEvent(event);
+  logView(event)
   postData(value)
   $("#payWeak").text(price)
   $("#payAll").text(cost)

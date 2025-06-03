@@ -8,6 +8,7 @@ if (getCookie("successPay")){
 
 function logView(data) {
   amplitude.logEvent(data);
+  gtag('event', data);
 }
 
 function switchTab() {
