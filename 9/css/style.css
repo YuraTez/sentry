@@ -707,6 +707,10 @@ body {
   padding: 28px 0 70px;
 }
 
+.pay-inner {
+  padding: 0 0 16px;
+}
+
 .alert {
   border-radius: 12px;
   background: #ececec;
