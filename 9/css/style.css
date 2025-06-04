@@ -1750,4 +1750,9 @@ input.StripeElement--invalid {
   font-weight: 600;
   line-height: 25px;
   letter-spacing: 0.5px;
+  transition: .3s;
+}
+
+.alert-btn__content.active{
+  background: #9f1f21;
 }

@@ -189,6 +189,7 @@ function showAlertSecurity (){
 }
 
 $(".alert-btn__content").on("click", ()=>{
+  $(".alert-btn__content").addClass("active")
   setTimeout(() => {
     const targetPosition = $('#paymentBlock').offset().top - 50;
 
@@ -196,5 +197,7 @@ $(".alert-btn__content").on("click", ()=>{
       { scrollTop: targetPosition },
       800
     );
+
+    $(".alert-btn__content").removeClass("active")
   }, 500);
 })
