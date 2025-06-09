@@ -1,4 +1,4 @@
-const stripe = Stripe("pk_live_51QkRlsJEAmaCVRCyJ4Y7C6owbDCbrBN42WZSR8p0qY9fb0isIRh8r2EmavMAnFBLNxaMnjt9Bbc4hv66MKxI0tMX00F6IEuvTf",{
+const stripe = Stripe("pk_test_51QkRlsJEAmaCVRCyzp14ggTmoGS1jvAwy8qctOUi2NmRDl4fY4cdI7EtBj2OfWnoCe3jywI9nM4pu1a70y9cH6db00ToNMBu7z",{
   betas: ['elements_link_autofill_never_v2']
 });
 
@@ -87,9 +87,9 @@ async function initialize() {
 async function fetchSubscriptionData(paymentMethod) {
   const input = $(".tariff__item-pay:checked")
   const email = getCookie("userEmail");
-  const trialPrice = input.attr("data-trial") ? input.attr("data-trial"): "price_1RJupRJEAmaCVRCyGg1Sy86N";
-  const mainPrice = input.attr("data-main") ? input.attr("data-main"): "price_1RH4GKJEAmaCVRCyY7Zd0fvH";
-  const response = await fetch('https://rocknlabs.com/api/stripe/subscription_schedule_form', {
+  const trialPrice = input.attr("data-trial") ? input.attr("data-trial"): "price_1RGHEsJEAmaCVRCyyFouq8LT";
+  const mainPrice = input.attr("data-main") ? input.attr("data-main"): "price_1RGHEsJEAmaCVRCyyFouq8LT";
+  const response = await fetch('http://159.203.93.84/api/stripe/subscription_schedule_form', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({

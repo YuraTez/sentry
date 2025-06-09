@@ -6,7 +6,7 @@ $('.tariff__item-upsale').on('click', function() {
 });
 
 function requestUpsale(product){
-  const url = "https://rocknlabs.com/api/solidgate/upsell_subscription";
+  const url = "http://159.203.93.84/api/solidgate/upsell_subscription";
   const data = {
     "product_id": product,
   }
