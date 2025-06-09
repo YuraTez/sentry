@@ -6,7 +6,7 @@ $('.tariff__item-upsale').on('click', function() {
 });
 
 function requestUpsale(product){
-  const url = "https://rocknlabs.com/api/stripe/subscription_form";
+  const url = "http://159.203.93.84/api/stripe/subscription_form";
   const data = {
     "price_id": product,
     "email": getCookie("userEmail"),

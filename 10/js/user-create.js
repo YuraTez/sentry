@@ -56,7 +56,7 @@ function createUser(){
   setCookie('userId', clickId, 90);
   setCookie('userEmail', emailInput.val(), 90);
 
-  const url = "https://rocknlabs.com/api/user/create";
+  const url = "http://159.203.93.84/api/user/create";
   const data = {
     "email": emailInput.val(),
     "click_id": clickId,

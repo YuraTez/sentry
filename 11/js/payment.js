@@ -1,4 +1,4 @@
-const url = 'https://rocknlabs.com/solidgate/generate_subscription_payment';
+const url = 'http://159.203.93.84/solidgate/generate_subscription_payment';
 
 function generateUUIDString(length = 255) {
   // Генерируем UUID

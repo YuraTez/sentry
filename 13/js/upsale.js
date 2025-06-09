@@ -6,12 +6,9 @@ $('.tariff__item-upsale').on('click', function() {
 });
 
 function requestUpsale(product){
-  const url = "https://rocknlabs.com/api/stripe/subscription_form";
+  const url = "http://159.203.93.84/api/solidgate/upsell_subscription";
   const data = {
-    "price_id": product,
-    "email": getCookie("userEmail"),
-    "trial_period_days": 10
-
+    "product_id": product,
   }
 
   async function sendPostRequest() {
@@ -19,7 +16,8 @@ function requestUpsale(product){
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${getCookie("userToken")}`
 
         },
         body: JSON.stringify(data)
