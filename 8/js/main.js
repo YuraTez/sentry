@@ -4,10 +4,12 @@ if (getCookie("successPay")){
 } else if(getCookie("userId")){
   $(".tab__page").removeClass("show")
   $(".tab__pay").addClass("show");
+  showAlertSecurity()
 }
 
 function logView(data) {
   amplitude.logEvent(data);
+  gtag('event', data);
 }
 
 function switchTab() {
@@ -26,6 +28,7 @@ function switchTab() {
   $(".popup").removeClass("active")
 
   sendMetaPixel ()
+
 }
 
 $(".open-animation-tab").on("click", function(){
@@ -174,4 +177,46 @@ document.querySelector('.switcher input').addEventListener('change', function() 
     }, 1000);
   }
 
+});
+
+function showAlertSecurity (){
+  setTimeout(()=>{
+    $(".security-alert").addClass("show");
+  },1000)
+
+  setTimeout(()=>{
+    $(".security-alert").removeClass("show");
+  },4000)
+}
+
+$(document).ready(function() {
+  const $fixedBtn = $(".btn-fixed");
+  const $formSubmitBtn = $("#paymentFormSubmit");
+  let isFixedBtnHidden = false;
+
+  // Плавный скролл к форме при клике
+  $fixedBtn.on("click", function() {
+    $("html, body").animate({
+      scrollTop: $formSubmitBtn.offset().top - 50
+    }, 800);
+  });
+
+  $(window).on("scroll", function() {
+    const formBtnTop = $formSubmitBtn.offset().top;
+    const scrollPosition = $(window).scrollTop() + $(window).height();
+    const fixedBtnHeight = $fixedBtn.outerHeight();
+
+    // Если прокрутили ДО кнопки формы (с учетом высоты фиксированной кнопки)
+    if (scrollPosition >= formBtnTop + fixedBtnHeight) {
+      if (!isFixedBtnHidden) {
+        $fixedBtn.fadeOut(0);
+        isFixedBtnHidden = true;
+      }
+    }
+    // Если скроллим вверх — показываем кнопку
+    else if (isFixedBtnHidden) {
+      $fixedBtn.fadeIn(200);
+      isFixedBtnHidden = false;
+    }
+  });
 });

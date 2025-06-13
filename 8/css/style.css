@@ -738,6 +738,10 @@ body {
   margin: 0 0 4px -20px;
 }
 
+.alert-location .alert__info{
+  margin: 0 0 4px 0;
+}
+
 .alert__info img {
   margin: 0 auto;
 }
@@ -1632,4 +1636,68 @@ input.StripeElement--invalid {
   font-weight: 700;
   line-height: 22px;
   letter-spacing: 0.38px;
+}
+
+.security-alert{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: -100%;
+  left: 10px;
+  width: calc(100% - 20px);
+  border-radius: 20px;
+  background: rgb(178 177 177 / 60%);
+  backdrop-filter: blur(40px);
+  padding: 14px 16px;
+  transition: .8s;
+  z-index: 20;
+}
+
+.security-alert.show{
+  top: 20px;
+}
+
+.security-alert__content{
+  display: flex;
+  gap: 8px;
+}
+
+.security-alert__title{
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+
+.security-alert__description{
+  font-size: 15px;
+  line-height: normal;
+  letter-spacing: -0.75px;
+}
+
+.security-alert__description span{
+  color: #FF2E32;
+}
+
+.security-alert__label{
+  color: #000;
+  text-align: right;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px;
+  letter-spacing: -0.24px;
+  opacity: 0.5;
+}
+
+.btn-fixed{
+  position: fixed;
+  bottom: 20px;
+  background: rgba(46, 46, 46, 0.8);
+  width: calc(100% - 40px);
+  max-width: 370px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
