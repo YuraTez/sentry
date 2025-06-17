@@ -1802,8 +1802,16 @@ input.StripeElement--invalid {
   background: #ececec;
 }
 
-.protection__step-icon{
-   flex-shrink: 0;
+.protection__step-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+}
+
+.protection__step-icon img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .protection__step-title{

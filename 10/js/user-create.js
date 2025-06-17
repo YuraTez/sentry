@@ -8,6 +8,8 @@ $("#openEmailTab").on("click", ()=>{
 const emailInput = $('#inputEmail');
 const userCreateButton = $('#userCreate');
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+let errorEmailFlag = true
+let clickEmailInputFlag = false
 
 // Функция для проверки валидности email
 function validateEmail() {
@@ -15,16 +17,39 @@ function validateEmail() {
   if (emailPattern.test(emailValue)) {
     emailInput.removeClass('error');
     userCreateButton.removeClass('btn--disabled');
+    errorEmailFlag = true;
   } else {
     emailInput.addClass('error');
     userCreateButton.addClass('btn--disabled');
+
+    if(errorEmailFlag){
+      logView("email_error")
+      errorEmailFlag = false;
+    }
   }
 }
 
-// Слушатель на ввод в поле email
-emailInput.on('input', function() {
-  validateEmail();
-});
+function debounce(func, wait) {
+  let timeout;
+  return function() {
+    const context = this, args = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(context, args);
+    }, wait);
+  };
+}
+
+const debouncedValidateEmail = debounce(validateEmail, 1000);
+
+emailInput.on('input', debouncedValidateEmail);
+
+emailInput.on("click", ()=>{
+  if (!clickEmailInputFlag){
+    clickEmailInputFlag = true
+    logView("email_click")
+  }
+})
 
 $('.email-domains__item').on('click', function() {
   const domain = $(this).text();
@@ -56,7 +81,7 @@ function createUser(){
   setCookie('userId', clickId, 90);
   setCookie('userEmail', emailInput.val(), 90);
 
-  const url = "http://159.203.93.84/api/user/create";
+  const url = "https://rocknlabs.com/api/user/create";
   const data = {
     "email": emailInput.val(),
     "click_id": clickId,
@@ -83,6 +108,7 @@ function createUser(){
       setCookie('userToken', responseData.token, 90);
       logView("is_lead")
     } catch (error) {
+      logView("email_error")
       console.error('Error:', error);
     }
   }
@@ -120,7 +146,7 @@ userCreateButton.on('click', ()=>{
   createUser()
   switchTab()
   startCountdown(600)
-  logView("email_click")
+  logView("email_success")
   logView("paywall_view")
-
+  handleScroll()
 });

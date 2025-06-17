@@ -87,6 +87,12 @@ function postData(product){
 
       const  formPay = PaymentFormSdk.init(initData);
 
+      formPay.on('mounted', e => {
+        if(e.data.entity === "applebtn"){
+          logView('apple_pay_intent');
+        }
+      })
+
       formPay.on('success', e => {
         setTimeout(function (){
           setCookie('successPay', "true", 90);
@@ -102,6 +108,11 @@ function postData(product){
         },1000)
       })
 
+      formPay.on('fail', e => {
+        if(e.data.entity === "applebtn"){
+          logView('apple_pay_fail');
+        }
+      })
 
     })
     .catch((error) => {

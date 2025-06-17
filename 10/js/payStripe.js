@@ -1,4 +1,8 @@
-const stripe = Stripe("pk_test_51QkRlsJEAmaCVRCyzp14ggTmoGS1jvAwy8qctOUi2NmRDl4fY4cdI7EtBj2OfWnoCe3jywI9nM4pu1a70y9cH6db00ToNMBu7z",{
+if (typeof Stripe === 'undefined') {
+  logView("frame_loading_error_stripe");
+}
+
+const stripe = Stripe("pk_live_51QkRlsJEAmaCVRCyJ4Y7C6owbDCbrBN42WZSR8p0qY9fb0isIRh8r2EmavMAnFBLNxaMnjt9Bbc4hv66MKxI0tMX00F6IEuvTf",{
   betas: ['elements_link_autofill_never_v2']
 });
 
@@ -49,8 +53,8 @@ async function initialize() {
     });
     cardCvc.mount('#card-cvc-element');
 
-    $(".form-loader").addClass("hide")
-
+   $(".form-loader").addClass("hide")
+    logView("frame_loading_finished_stripe")
     const handleInteraction = () => {
       $("#paymentFormSubmit").removeClass("btn--disabled")
     };
@@ -61,18 +65,21 @@ async function initialize() {
 
     cardNumber.on('change', (event) => {
       if (event.complete) {
+        logView("card_field_fill")
         cardExpiry.focus();
       }
     });
 
     cardExpiry.on('change', (event) => {
       if (event.complete) {
+        logView("expire_fill")
         cardCvc.focus();
       }
     });
 
     cardCvc.on('change', (event) => {
       if (event.complete) {
+        logView("cvv_fill")
         $("#card-holder-element").focus();
       }
     });
@@ -80,6 +87,7 @@ async function initialize() {
   } catch (error) {
     console.error("Initialization error:", error);
     showMessage("Failed to initialize subscription form");
+    logView("frame_loading_error_stripe")
   }
 }
 
@@ -87,9 +95,9 @@ async function initialize() {
 async function fetchSubscriptionData(paymentMethod) {
   const input = $(".tariff__item-pay:checked")
   const email = getCookie("userEmail");
-  const trialPrice = input.attr("data-trial") ? input.attr("data-trial"): "price_1RGHEsJEAmaCVRCyyFouq8LT";
-  const mainPrice = input.attr("data-main") ? input.attr("data-main"): "price_1RGHEsJEAmaCVRCyyFouq8LT";
-  const response = await fetch('http://159.203.93.84/api/stripe/subscription_schedule_form', {
+  const trialPrice = input.attr("data-trial") ? input.attr("data-trial"): "price_1RJupRJEAmaCVRCyGg1Sy86N";
+  const mainPrice = input.attr("data-main") ? input.attr("data-main"): "price_1RH4GKJEAmaCVRCyY7Zd0fvH";
+  const response = await fetch('https://rocknlabs.com/api/stripe/subscription_schedule_form', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
@@ -136,6 +144,8 @@ async function handleSubmit(e) {
 
     if (pmError) throw pmError;
 
+    logView("purchase_try")
+
     // 2. Сразу подтверждаем платеж на клиенте
     const {clientSecret} = await fetchSubscriptionData(paymentMethod.id);
 
@@ -152,6 +162,7 @@ async function handleSubmit(e) {
     // 3. Обработка результата
     switch (paymentIntent.status) {
       case 'succeeded':
+        logView("purchase_success")
         $(".popup-success").addClass("active")
         setCookie('successPay', "true", 90);
         await completeSubscription(paymentIntent.id);
@@ -160,12 +171,14 @@ async function handleSubmit(e) {
         await stripe.handleCardAction(clientSecret);
         break;
       default:
+        logView("purchase_fail")
         $(".popup-error").addClass("active")
         setCookie('successPay', "true", 90);
         throw new Error(`Unexpected status: ${paymentIntent.status}`);
     }
 
   } catch (error) {
+    logView("purchase_fail")
     $(".popup-error").addClass("active")
     showMessage(error.message);
   } finally {
@@ -205,7 +218,7 @@ function setLoading(isLoading) {
 
 $('.tariff__item-pay').on('click', function() {
   const event = $(this).attr("data-price");
-  amplitude.logEvent(event);
+  logView(event);
   initialize();
 
   const price = $(this).next().find(".tariff__period-price-new").text();
@@ -217,9 +230,11 @@ const payButton = document.querySelector(".pay-button");
 
 payButton.addEventListener('click', function (){
   $(".loader-container").addClass("active");
+  logView("frame_loading_started_stripe")
   initialize();
   setTimeout(()=>{
     $(".loader-container").removeClass("active");
+    showAlertSecurity()
   },3000)
 });
 

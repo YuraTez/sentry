@@ -1,4 +1,4 @@
-const url = 'http://159.203.93.84/solidgate/generate_subscription_payment';
+const url = 'https://rocknlabs.com/solidgate/generate_subscription_payment';
 
 function generateUUIDString(length = 255) {
   // Генерируем UUID
@@ -87,6 +87,12 @@ function postData(product){
 
       const  formPay = PaymentFormSdk.init(initData);
 
+      formPay.on('mounted', e => {
+        if(e.data.entity === "applebtn"){
+          logView('apple_pay_intent');
+        }
+      })
+
       formPay.on('success', e => {
         setTimeout(function (){
           setCookie('successPay', "true", 90);
@@ -94,15 +100,20 @@ function postData(product){
           setCookie('successPay', "true", 90);
           if(e.data.entity === "applebtn"){
             $(".btn-success").addClass("applePaySuccess");
-            amplitude.logEvent('apple_pay_success');
+            logView("apple_pay_success")
           }else{
-            amplitude.logEvent('purchase_success');
+            logView("purchase_success")
           }
 
-          amplitude.logEvent('success_view');
+          logView("success_view")
         },1000)
       })
 
+      formPay.on('fail', e => {
+        if(e.data.entity === "applebtn"){
+          logView('apple_pay_fail');
+        }
+      })
 
     })
     .catch((error) => {
@@ -116,7 +127,7 @@ $('.tariff__item-pay').on('click', function() {
   const event = $(this).attr("data-price");
   const period = $(this).next().find(".tariff__subscription-period").text().trim().toLowerCase()
   const cost = $(this).attr("data-cost");
-  amplitude.logEvent(event);
+  logView(event)
   postData(value)
   $("#payWeak").text(price)
   $("#payAll").text(cost)

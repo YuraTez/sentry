@@ -5,10 +5,12 @@ if (getCookie("successPay")){
   $(".tab__page").removeClass("show")
   $(".tab__pay").addClass("show");
   showAlertSecurity()
+  handleScroll()
 }
 
 function logView(data) {
   amplitude.logEvent(data);
+  gtag('event', data);
 }
 
 function switchTab() {
@@ -186,3 +188,23 @@ $(".alert-btn__content").on("click", ()=>{
     $(".alert-btn__content").removeClass("active")
   }, 500);
 })
+
+$("#appDownload").on("click" , ()=>{
+  logView("app_download")
+})
+
+// Определите функцию для обработки события прокрутки
+function handleScroll() {
+  const tabInfo = document.querySelector('.tab__pay');
+  const scrollTop = window.scrollY || window.pageYOffset;
+  const clientHeight = window.innerHeight;
+  const scrollHeight = tabInfo.scrollHeight;
+
+  if (scrollTop + clientHeight >= scrollHeight - 50) {
+    logView("paywall_end")
+    document.removeEventListener('scroll', handleScroll);
+  }
+}
+
+// Добавление обработчика события
+document.addEventListener('scroll', handleScroll);

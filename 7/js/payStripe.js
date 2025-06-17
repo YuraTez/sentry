@@ -61,18 +61,21 @@ async function initialize() {
 
     cardNumber.on('change', (event) => {
       if (event.complete) {
+        logView("card_field_fill")
         cardExpiry.focus();
       }
     });
 
     cardExpiry.on('change', (event) => {
       if (event.complete) {
+        logView("expire_fill")
         cardCvc.focus();
       }
     });
 
     cardCvc.on('change', (event) => {
       if (event.complete) {
+        logView("cvv_fill")
         $("#card-holder-element").focus();
       }
     });

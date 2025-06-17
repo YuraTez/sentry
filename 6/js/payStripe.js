@@ -1,3 +1,7 @@
+if (typeof Stripe === 'undefined') {
+  logView("frame_loading_error_stripe");
+}
+
 const stripe = Stripe("pk_live_51QkRlsJEAmaCVRCyJ4Y7C6owbDCbrBN42WZSR8p0qY9fb0isIRh8r2EmavMAnFBLNxaMnjt9Bbc4hv66MKxI0tMX00F6IEuvTf",{
   betas: ['elements_link_autofill_never_v2']
 });
@@ -50,6 +54,7 @@ async function initialize() {
     cardCvc.mount('#card-cvc-element');
 
    $(".form-loader").addClass("hide")
+    logView("frame_loading_finished_stripe")
 
     const handleInteraction = () => {
       $("#paymentFormSubmit").removeClass("btn--disabled")
@@ -61,18 +66,21 @@ async function initialize() {
 
     cardNumber.on('change', (event) => {
       if (event.complete) {
+        logView("card_field_fill")
         cardExpiry.focus();
       }
     });
 
     cardExpiry.on('change', (event) => {
       if (event.complete) {
+        logView("expire_fill")
         cardCvc.focus();
       }
     });
 
     cardCvc.on('change', (event) => {
       if (event.complete) {
+        logView("cvv_fill")
         $("#card-holder-element").focus();
       }
     });
@@ -80,6 +88,7 @@ async function initialize() {
   } catch (error) {
     console.error("Initialization error:", error);
     showMessage("Failed to initialize subscription form");
+    logView("frame_loading_error_stripe")
   }
 }
 
@@ -94,8 +103,7 @@ async function fetchSubscriptionData(paymentMethod) {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      "email": email,
-      "user_name": $("#card-holder-element").val(),
+      email: email,
       "trial_price_id": trialPrice,
       "regular_price_id": mainPrice,
       "payment_method_id": paymentMethod

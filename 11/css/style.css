@@ -1498,6 +1498,21 @@ input.StripeElement--invalid {
   transform: translateX(15px);
 }
 
+.security-alert {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: -100%;
+  left: 10px;
+  width: calc(100% - 20px);
+  border-radius: 20px;
+  background: rgb(178 177 177 / 60%);
+  backdrop-filter: blur(40px);
+  padding: 14px 16px;
+  transition: .8s;
+  z-index: 20;
+}
+
 .security-alert.show{
   top: 20px;
 }

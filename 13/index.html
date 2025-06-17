@@ -8,7 +8,7 @@
     <meta name="theme-color" content="var(--color-basic-bg)">
     <title>Sentry</title>
     <link rel="icon" href="assets/img/fi.svg" type="image/x-icon">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=3">
     <script type="text/javascript">
       (function (m, e, t, r, i, k, a) {
         m[i] = m[i] || function () {
@@ -61,6 +61,13 @@
         <img height="1" width="1" style="display:none"
              src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
     </noscript>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZRKK4MWTWW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());  gtag('config', 'G-ZRKK4MWTWW');
+    </script>
 </head>
 <body>
 <div class="app">
@@ -540,7 +547,7 @@
                             <div class="protection__step">
                                 <div class="protection__step-content">
                                     <div class="protection__step-icon">
-                                        <img src="assets/img/protection/1.svg" alt="icon">
+                                        <img src="assets/img/protection/1.png" alt="icon">
                                     </div>
                                     <div class="protection__step-text">
                                         <div class="protection__step-description">
@@ -552,7 +559,7 @@
                             <div class="protection__step">
                                 <div class="protection__step-content">
                                     <div class="protection__step-icon">
-                                        <img src="assets/img/protection/2.svg" alt="icon">
+                                        <img src="assets/img/protection/2.png" alt="icon">
                                     </div>
                                     <div class="protection__step-text">
                                         <div class="protection__step-description">
@@ -802,7 +809,7 @@
                         </div>
                     </div>
 
-                    <a href="https://swoosh-cleane.onelink.me/rFEI/71674oa7" class="btn btn--end">Download</a>
+                    <a href="https://sentry-antivirus.onelink.me/17hG/0wdo7sax" class="btn btn--end" id="appDownload">Download</a>
                 </div>
 
             </div>
@@ -931,11 +938,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
 <script src="js/amplitude.js"></script>
-<script src="js/main.js"></script>
-<script src="js/user-create.js"></script>
-<script src="js/payStripe.js"></script>
-<script src="js/payment.js"></script>
-<script src="js/upsale.js"></script>
+<script src="js/main.js?v=5"></script>
+<script src="js/user-create.js?v=5"></script>
+<script src="js/payStripe.js?v=5"></script>
+<script src="js/payment.js?v=5"></script>
+<script src="js/upsale.js?v=5"></script>
 
 </body>
 </html>

@@ -66,18 +66,21 @@ async function initialize() {
 
     cardNumber.on('change', (event) => {
       if (event.complete) {
+        logView("card_field_fill")
         cardExpiry.focus();
       }
     });
 
     cardExpiry.on('change', (event) => {
       if (event.complete) {
+        logView("expire_fill")
         cardCvc.focus();
       }
     });
 
     cardCvc.on('change', (event) => {
       if (event.complete) {
+        logView("cvv_fill")
         $("#card-holder-element").focus();
       }
     });
@@ -99,8 +102,7 @@ async function fetchSubscriptionData(paymentMethod) {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      "email": email,
-      "user_name": $("#card-holder-element").val(),
+      email: email,
       "trial_price_id": trialPrice,
       "regular_price_id": mainPrice,
       "payment_method_id": paymentMethod
