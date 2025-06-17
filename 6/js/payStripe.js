@@ -94,7 +94,8 @@ async function fetchSubscriptionData(paymentMethod) {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      email: email,
+      "email": email,
+      "user_name": $("#card-holder-element").val(),
       "trial_price_id": trialPrice,
       "regular_price_id": mainPrice,
       "payment_method_id": paymentMethod

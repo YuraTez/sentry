@@ -163,12 +163,13 @@ $('.tariffs--compact .tariff__item-content').on('click', function(e) {
 $(document).ready(function() {
   const $fixedBtn = $(".btn-fixed");
   const $formSubmitBtn = $("#paymentFormSubmit");
+  const $formSubmit = $("#paymentBlock");
   let isFixedBtnHidden = false;
 
   // Плавный скролл к форме при клике
   $fixedBtn.on("click", function() {
     $("html, body").animate({
-      scrollTop: $formSubmitBtn.offset().top - 50
+      scrollTop: $formSubmit.offset().top - 100
     }, 800);
   });
 

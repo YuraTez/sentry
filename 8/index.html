@@ -663,55 +663,57 @@
                         <div class="form-loader">
                             <div class="loader"></div>
                         </div>
-                        <div id="solid-payment-form-container"></div>
-                        <form id="payment-form">
+                        <div id="solid-payment-form-container">
+                            <form id="payment-form">
 
-                            <!-- Номер карты -->
-                            <div class="form-group">
-                                <label>Card number</label>
-                                <div id="card-number-element"></div>
-                            </div>
-
-                            <div class="form-group-row">
-                                <!-- Expiry date -->
+                                <!-- Номер карты -->
                                 <div class="form-group">
-                                    <label>Expiry date</label>
-                                    <div id="card-expiry-element"></div>
+                                    <label>Card number</label>
+                                    <div id="card-number-element"></div>
                                 </div>
 
-                                <!-- CVC/CVV -->
+                                <div class="form-group-row">
+                                    <!-- Expiry date -->
+                                    <div class="form-group">
+                                        <label>Expiry date</label>
+                                        <div id="card-expiry-element"></div>
+                                    </div>
+
+                                    <!-- CVC/CVV -->
+                                    <div class="form-group">
+                                        <label>CVC</label>
+                                        <div id="card-cvc-element"></div>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
-                                    <label>CVC</label>
-                                    <div id="card-cvc-element"></div>
+                                    <label>Cardholder name</label>
+                                    <input type="text" id="card-holder-element" placeholder="JOHN SMITH">
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label>Cardholder name</label>
-                                <input type="text" id="card-holder-element" placeholder="JOHN SMITH">
-                            </div>
+                                <div class="card-list">
+                                    <div class="card-list__item">
+                                        <img src="assets/img/cards/1.svg" alt="card">
+                                    </div>
+                                    <div class="card-list__item">
+                                        <img src="assets/img/cards/2.svg" alt="card">
+                                    </div>
+                                    <div class="card-list__item">
+                                        <img src="assets/img/cards/3.svg" alt="card">
+                                    </div>
+                                    <div class="card-list__item">
+                                        <img src="assets/img/cards/4.svg?v3" alt="card">
+                                    </div>
+                                </div>
 
-                            <div class="card-list">
-                                <div class="card-list__item">
-                                    <img src="assets/img/cards/1.svg" alt="card">
-                                </div>
-                                <div class="card-list__item">
-                                    <img src="assets/img/cards/2.svg" alt="card">
-                                </div>
-                                <div class="card-list__item">
-                                    <img src="assets/img/cards/3.svg" alt="card">
-                                </div>
-                                <div class="card-list__item">
-                                    <img src="assets/img/cards/4.svg?v3" alt="card">
-                                </div>
-                            </div>
+                                <button id="paymentFormSubmit" class="btn btn--disabled" type="submit">
+                                    <div class="spinner hidden" id="spinner"></div>
+                                    <span id="button-text" class="button-text">Try Sentry Now</span>
+                                </button>
+                                <div id="payment-message" class="hidden payment-message"></div>
+                            </form>
+                        </div>
 
-                            <button id="paymentFormSubmit" class="btn btn--disabled" type="submit">
-                                <div class="spinner hidden" id="spinner"></div>
-                                <span id="button-text" class="button-text">Try Sentry Now</span>
-                            </button>
-                            <div id="payment-message" class="hidden payment-message"></div>
-                        </form>
                     </div>
                     <div class="money-back">
                         <div class="money-back__title">100% Money-Back Guarantee</div>
@@ -949,7 +951,7 @@
 <script src="js/amplitude.js"></script>
 <script src="js/main.js?v=5"></script>
 <script src="js/user-create.js"></script>
-<script src="js/payStripe.js?v=4"></script>
+<script src="js/payStripe.js?v=5"></script>
 <script src="js/payment.js?v=4"></script>
 <script src="js/upsale.js?v=4"></script>
 
