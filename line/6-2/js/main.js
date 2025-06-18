@@ -183,3 +183,7 @@ function handleScroll() {
 
 // Добавление обработчика события
 document.addEventListener('scroll', handleScroll);
+
+$("#solid-payment-form-iframe").on("click", ()=>{
+  logView("buy_click")
+});

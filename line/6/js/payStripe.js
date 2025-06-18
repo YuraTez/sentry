@@ -166,7 +166,6 @@ async function handleSubmit(e) {
     switch (paymentIntent.status) {
       case 'succeeded':
         logView("purchase_success")
-        amplitude.logEvent("purchase_success");
         $(".popup-success").addClass("active")
         setCookie('successPay', "true", 90);
         await completeSubscription(paymentIntent.id);

@@ -205,3 +205,7 @@ function handleScroll() {
 
 // Добавление обработчика события
 document.addEventListener('scroll', handleScroll);
+
+$("#paymentFormSubmit").on("click", ()=>{
+  logView("buy_click")
+});

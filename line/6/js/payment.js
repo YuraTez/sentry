@@ -126,7 +126,7 @@ $('.tariff__item-pay').on('click', function() {
   const event = $(this).attr("data-price");
   const period = $(this).next().find(".tariff__subscription-period").text().trim().toLowerCase()
   const cost = $(this).attr("data-cost");
-  amplitude.logEvent(event);
+  logView(event);
   postData(value)
   $("#payWeak").text(price)
   $("#payAll").text(cost)

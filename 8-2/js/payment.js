@@ -96,9 +96,9 @@ function postData(product){
       const  formPay = PaymentFormSdk.init(initData);
 
       formPay.on('mounted', e => {
-        amplitude.logEvent('frame_loading_finished');
+        logView('frame_loading_finished');
         if(e.data.entity === "applebtn"){
-          amplitude.logEvent('apple_pay_intent');
+          logView('apple_pay_intent');
         }
       })
 
@@ -118,12 +118,12 @@ function postData(product){
         const validFlag = !hasInvalidFields;
 
         if(data.target.type === "button"){
-          amplitude.logEvent('purchase_intent');
+          logView('purchase_intent');
           const fieldValues = Object.values(data.cardForm.fields);
           const hasInvalid = fieldValues.some(field => !field.isValid);
 
           if (hasInvalid){
-            amplitude.logEvent('purchase_intent_fail');
+            logView('purchase_intent_fail');
           }
         }
 
@@ -132,17 +132,17 @@ function postData(product){
           $("#solid-form-button-submit").removeClass("btn--disabled");
 
           if(key === "cardNumber" && field.isValid && cardNumber){
-            amplitude.logEvent('card_field_fill');
+            logView('card_field_fill');
             return  cardNumber = false
           }
 
           if(key === "cardExpiryDate" && field.isValid && cardExpiryDate){
-            amplitude.logEvent('expire_fill');
+            logView('expire_fill');
             return  cardExpiryDate = false
           }
 
           if(key === "cardCvv" && field.isValid && cardCvv){
-            amplitude.logEvent('cvv_fill');
+            logView('cvv_fill');
             return  cardCvv = false
           }
 

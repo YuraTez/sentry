@@ -239,3 +239,7 @@ function handleScroll() {
 
 // Добавление обработчика события
 document.addEventListener('scroll', handleScroll);
+
+$("#solid-form-button-submit").on("click", ()=>{
+  logView("buy_click")
+});

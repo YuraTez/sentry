@@ -219,7 +219,7 @@ function setLoading(isLoading) {
 
 $('.tariff__item-pay').on('click', function() {
   const event = $(this).attr("data-price");
-  amplitude.logEvent(event);
+  logView(event);
   initialize();
 
   const price = $(this).next().find(".tariff__period-price-new").text();
