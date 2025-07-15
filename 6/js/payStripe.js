@@ -63,6 +63,7 @@ async function initialize() {
     cardNumber.on('focus', handleInteraction);
     cardExpiry.on('focus', handleInteraction);
     cardCvc.on('focus', handleInteraction);
+    $("#card-holder-element").on("focus", handleInteraction);
 
     cardNumber.on('change', (event) => {
       if (event.complete) {
@@ -85,12 +86,18 @@ async function initialize() {
       }
     });
 
+
   } catch (error) {
     console.error("Initialization error:", error);
     showMessage("Failed to initialize subscription form");
     logView("frame_loading_error_stripe")
   }
 }
+
+$("#paymentFormSubmit").on("click", function (event) {
+  console.log('click')
+  $(this).addClass("btn--disabled");
+})
 
 // Получаем данные подписки с API
 async function fetchSubscriptionData(paymentMethod) {
@@ -103,7 +110,8 @@ async function fetchSubscriptionData(paymentMethod) {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      email: email,
+      "email": email,
+      "user_name": $("#card-holder-element").val(),
       "trial_price_id": trialPrice,
       "regular_price_id": mainPrice,
       "payment_method_id": paymentMethod

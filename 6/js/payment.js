@@ -112,6 +112,7 @@ function postData(product){
         if(e.data.entity === "applebtn"){
           logView('apple_pay_fail');
         }
+        $(".popup-error").addClass("active")
       })
 
 
