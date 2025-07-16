@@ -98,11 +98,13 @@ async function fetchSubscriptionData(paymentMethod) {
   const email = getCookie("userEmail");
   const trialPrice = input.attr("data-trial") ? input.attr("data-trial"): "price_1RJupRJEAmaCVRCyGg1Sy86N";
   const mainPrice = input.attr("data-main") ? input.attr("data-main"): "price_1RH4GKJEAmaCVRCyY7Zd0fvH";
+
   const response = await fetch('https://rocknlabs.com/api/stripe/subscription_schedule_form', {
     method: 'POST',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
-      email: email,
+      "email": email,
+      "user_name": $("#card-holder-element").val(),
       "trial_price_id": trialPrice,
       "regular_price_id": mainPrice,
       "payment_method_id": paymentMethod
