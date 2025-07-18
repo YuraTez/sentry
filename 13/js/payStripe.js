@@ -67,21 +67,23 @@ async function initialize() {
     cardNumber.on('change', (event) => {
       if (event.complete) {
         logView("card_field_fill")
-        cardExpiry.focus();
+        setTimeout(()=>{  cardExpiry.focus();},0)
       }
     });
 
     cardExpiry.on('change', (event) => {
       if (event.complete) {
         logView("expire_fill")
-        cardCvc.focus();
+        setTimeout(()=> cardCvc.focus(),0)
+      
       }
     });
 
     cardCvc.on('change', (event) => {
       if (event.complete) {
         logView("cvv_fill")
-        $("#card-holder-element").focus();
+        setTimeout(()=>{ $("#card-holder-element").focus();},0)
+
       }
     });
 
