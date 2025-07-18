@@ -25,6 +25,10 @@ const elementStyles = {
 let elements;
 let cardNumber, cardExpiry, cardCvc;
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 async function initialize() {
   try {
@@ -64,25 +68,27 @@ async function initialize() {
     cardExpiry.on('focus', handleInteraction);
     cardCvc.on('focus', handleInteraction);
 
-    cardNumber.on('change', (event) => {
+    cardNumber.on('change',  async (event) => {
       if (event.complete) {
+        await delay(100);
         logView("card_field_fill")
-        setTimeout(()=>{  cardExpiry.focus();},1000)
+        cardExpiry.focus()
       }
     });
 
-    cardExpiry.on('change', (event) => {
+    cardExpiry.on('change', async (event) => {
       if (event.complete) {
+        await delay(100);
         logView("expire_fill")
-        setTimeout(()=> cardCvc.focus(),1000)
-      
+        cardCvc.focus()
       }
     });
 
-    cardCvc.on('change', (event) => {
+    cardCvc.on('change',  async (event) => {
       if (event.complete) {
+        await delay(100);
         logView("cvv_fill")
-        setTimeout(()=>{ $("#card-holder-element").focus();},1000)
+        $("#card-holder-element").focus();
 
       }
     });
