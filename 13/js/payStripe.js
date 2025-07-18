@@ -67,14 +67,14 @@ async function initialize() {
     cardNumber.on('change', (event) => {
       if (event.complete) {
         logView("card_field_fill")
-        setTimeout(()=>{  cardExpiry.focus();},0)
+        setTimeout(()=>{  cardExpiry.focus();},100)
       }
     });
 
     cardExpiry.on('change', (event) => {
       if (event.complete) {
         logView("expire_fill")
-        setTimeout(()=> cardCvc.focus(),0)
+        setTimeout(()=> cardCvc.focus(),100)
       
       }
     });
@@ -82,7 +82,7 @@ async function initialize() {
     cardCvc.on('change', (event) => {
       if (event.complete) {
         logView("cvv_fill")
-        setTimeout(()=>{ $("#card-holder-element").focus();},0)
+        setTimeout(()=>{ $("#card-holder-element").focus();},100)
 
       }
     });
