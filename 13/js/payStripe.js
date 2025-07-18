@@ -26,21 +26,41 @@ let elements;
 let cardNumber, cardExpiry, cardCvc;
 
 function forceFocusOnIOS(element) {
-  const fakeBtn = document.createElement('button');
-  fakeBtn.style.position = 'absolute';
-  fakeBtn.style.opacity = '0';
-  fakeBtn.style.height = '0';
-  fakeBtn.style.width = '0';
-  document.body.appendChild(fakeBtn);
+  if (!element) return;
 
-  fakeBtn.addEventListener('touchend', () => {
-    element.focus();
-    fakeBtn.remove();
-  }, { once: true });
+  // 1. Создаём невидимую кнопку
+  const fakeButton = document.createElement('button');
+  fakeButton.style.position = 'fixed';
+  fakeButton.style.opacity = '0';
+  fakeButton.style.pointerEvents = 'none';
+  fakeButton.style.height = '0';
+  fakeButton.style.width = '0';
 
-  fakeBtn.click(); // Имитируем нажатие
+  // 2. Добавляем её в DOM
+  document.body.appendChild(fakeButton);
+
+  // 3. Фокусируемся на фейковой кнопке сначала
+  fakeButton.focus();
+
+  // 4. Затем переключаемся на нужный элемент
+  setTimeout(() => {
+    try {
+      // Для Stripe Elements
+      if (typeof element.focus === 'function') {
+        element.focus();
+      }
+      // Для обычных input
+      else if (element instanceof HTMLElement) {
+        element.focus();
+      }
+    } catch (e) {
+      console.error('Focus failed:', e);
+    } finally {
+      // Удаляем фейковую кнопку
+      fakeButton.remove();
+    }
+  }, 100);
 }
-
 
 
 async function initialize() {
@@ -85,6 +105,7 @@ async function initialize() {
       if (event.complete) {
         logView("card_field_fill")
         forceFocusOnIOS(cardExpiry)
+        cardExpiry.focus()
       }
     });
 
@@ -92,6 +113,7 @@ async function initialize() {
       if (event.complete) {
         logView("expire_fill")
         forceFocusOnIOS(cardCvc)
+        cardCvc.focus()
       }
     });
 
@@ -99,6 +121,7 @@ async function initialize() {
       if (event.complete) {
         logView("cvv_fill")
         forceFocusOnIOS($("#card-holder-element"))
+        $("#card-holder-element").focus()
       }
     });
 
