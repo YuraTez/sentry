@@ -25,6 +25,24 @@ const elementStyles = {
 let elements;
 let cardNumber, cardExpiry, cardCvc;
 
+function forceFocusOnIOS(element) {
+  const fakeBtn = document.createElement('button');
+  fakeBtn.style.position = 'absolute';
+  fakeBtn.style.opacity = '0';
+  fakeBtn.style.height = '0';
+  fakeBtn.style.width = '0';
+  document.body.appendChild(fakeBtn);
+
+  fakeBtn.addEventListener('touchend', () => {
+    element.focus();
+    fakeBtn.remove();
+  }, { once: true });
+
+  fakeBtn.click(); // Имитируем нажатие
+}
+
+
+
 async function initialize() {
   try {
 
@@ -66,21 +84,21 @@ async function initialize() {
     cardNumber.on('change',  (event) => {
       if (event.complete) {
         logView("card_field_fill")
-        requestAnimationFrame(() => cardExpiry.focus());
+        forceFocusOnIOS(cardExpiry)
       }
     });
 
     cardExpiry.on('change',  (event) => {
       if (event.complete) {
         logView("expire_fill")
-        requestAnimationFrame(() => cardCvc.focus());
+        forceFocusOnIOS(cardCvc)
       }
     });
 
     cardCvc.on('change',  (event) => {
       if (event.complete) {
         logView("cvv_fill")
-        requestAnimationFrame(() =>  $("#card-holder-element").focus());
+        forceFocusOnIOS($("#card-holder-element"))
       }
     });
 
